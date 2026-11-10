@@ -1,0 +1,434 @@
+{
+ "projeto": "NucleoViv_TV_Vertical",
+ "largura": 2160,
+ "altura": 3840,
+ "fps": 30,
+ "timelines": {
+  "M1": {
+   "nome": "M1_LINHA_DA_JORNADA",
+   "frames": 885,
+   "render": "NucleoViv_TV_M1_LINHA_DA_JORNADA_2160x3840_30p_loop",
+   "cenas": [
+    {
+     "nome": "Abertura",
+     "ini": 0,
+     "fim": 132
+    },
+    {
+     "nome": "Fase 1",
+     "ini": 132,
+     "fim": 330
+    },
+    {
+     "nome": "Fase 2",
+     "ini": 330,
+     "fim": 528
+    },
+    {
+     "nome": "Fase Perene",
+     "ini": 528,
+     "fim": 747
+    },
+    {
+     "nome": "Assinatura",
+     "ini": 747,
+     "fim": 885
+    }
+   ],
+   "trilhas": {
+    "1": [
+     {
+      "arquivo": "grafica/NucleoViv_TV_M1_LINHA_DA_JORNADA_2160x3840_30p_loop.mp4",
+      "rec": 0,
+      "src": 0,
+      "dur": 132,
+      "nome": "Abertura"
+     },
+     {
+      "arquivo": "grafica/NucleoViv_TV_M1_LINHA_DA_JORNADA_2160x3840_30p_loop.mp4",
+      "rec": 132,
+      "src": 132,
+      "dur": 198,
+      "nome": "Fase 1"
+     },
+     {
+      "arquivo": "grafica/NucleoViv_TV_M1_LINHA_DA_JORNADA_2160x3840_30p_loop.mp4",
+      "rec": 330,
+      "src": 330,
+      "dur": 198,
+      "nome": "Fase 2"
+     },
+     {
+      "arquivo": "grafica/NucleoViv_TV_M1_LINHA_DA_JORNADA_2160x3840_30p_loop.mp4",
+      "rec": 528,
+      "src": 528,
+      "dur": 219,
+      "nome": "Fase Perene"
+     },
+     {
+      "arquivo": "grafica/NucleoViv_TV_M1_LINHA_DA_JORNADA_2160x3840_30p_loop.mp4",
+      "rec": 747,
+      "src": 747,
+      "dur": 138,
+      "nome": "Assinatura"
+     }
+    ]
+   },
+   "slots": []
+  },
+  "M2": {
+   "nome": "M2_TRES_FASES",
+   "frames": 822,
+   "render": "NucleoViv_TV_M2_TRES_FASES_2160x3840_30p_loop",
+   "cenas": [
+    {
+     "nome": "Abertura",
+     "ini": 0,
+     "fim": 135
+    },
+    {
+     "nome": "Fase 1",
+     "ini": 135,
+     "fim": 315
+    },
+    {
+     "nome": "Fase 2",
+     "ini": 315,
+     "fim": 495
+    },
+    {
+     "nome": "Fase Perene",
+     "ini": 495,
+     "fim": 675
+    },
+    {
+     "nome": "Assinatura",
+     "ini": 675,
+     "fim": 822
+    }
+   ],
+   "trilhas": {
+    "1": [
+     {
+      "arquivo": "grafica/NucleoViv_TV_M2_TRES_FASES_2160x3840_30p_loop.mp4",
+      "rec": 0,
+      "src": 0,
+      "dur": 135,
+      "nome": "Abertura"
+     },
+     {
+      "arquivo": "grafica/NucleoViv_TV_M2_TRES_FASES_2160x3840_30p_loop.mp4",
+      "rec": 135,
+      "src": 135,
+      "dur": 180,
+      "nome": "Fase 1"
+     },
+     {
+      "arquivo": "grafica/NucleoViv_TV_M2_TRES_FASES_2160x3840_30p_loop.mp4",
+      "rec": 315,
+      "src": 315,
+      "dur": 180,
+      "nome": "Fase 2"
+     },
+     {
+      "arquivo": "grafica/NucleoViv_TV_M2_TRES_FASES_2160x3840_30p_loop.mp4",
+      "rec": 495,
+      "src": 495,
+      "dur": 180,
+      "nome": "Fase Perene"
+     },
+     {
+      "arquivo": "grafica/NucleoViv_TV_M2_TRES_FASES_2160x3840_30p_loop.mp4",
+      "rec": 675,
+      "src": 675,
+      "dur": 147,
+      "nome": "Assinatura"
+     }
+    ]
+   },
+   "slots": []
+  },
+  "T1": {
+   "nome": "T1_A_JORNADA",
+   "frames": 894,
+   "render": "NucleoViv_TV_T1_A_JORNADA_2160x3840_30p_loop",
+   "cenas": [
+    {
+     "nome": "Logo animada",
+     "ini": 0,
+     "fim": 174
+    },
+    {
+     "nome": "Fase 1",
+     "ini": 174,
+     "fim": 366
+    },
+    {
+     "nome": "Fase 2",
+     "ini": 366,
+     "fim": 558
+    },
+    {
+     "nome": "Fase Perene",
+     "ini": 558,
+     "fim": 750
+    },
+    {
+     "nome": "Assinatura",
+     "ini": 750,
+     "fim": 894
+    }
+   ],
+   "trilhas": {
+    "1": [
+     {
+      "arquivo": "grafica/T1_A_JORNADA_BASE_fundo_e_logos.mp4",
+      "rec": 0,
+      "src": 0,
+      "dur": 894,
+      "nome": "Base: fundo e logos"
+     }
+    ],
+    "3": [
+     {
+      "arquivo": "textos/T1_A_JORNADA_escurecimento.png",
+      "rec": 174,
+      "src": 0,
+      "dur": 576,
+      "nome": "Escurecimento sob o texto"
+     }
+    ],
+    "4": [
+     {
+      "arquivo": "textos/T1_A_JORNADA_fase1_titulo.png",
+      "rec": 182,
+      "src": 0,
+      "dur": 176,
+      "nome": "FASE 1 título"
+     },
+     {
+      "arquivo": "textos/T1_A_JORNADA_fase2_titulo.png",
+      "rec": 374,
+      "src": 0,
+      "dur": 176,
+      "nome": "FASE 2 título"
+     },
+     {
+      "arquivo": "textos/T1_A_JORNADA_fase3_titulo.png",
+      "rec": 566,
+      "src": 0,
+      "dur": 177,
+      "nome": "FASE PERENE título"
+     }
+    ],
+    "5": [
+     {
+      "arquivo": "textos/T1_A_JORNADA_fase1_frase.png",
+      "rec": 213,
+      "src": 0,
+      "dur": 145,
+      "nome": "FASE 1 frase"
+     },
+     {
+      "arquivo": "textos/T1_A_JORNADA_fase2_frase.png",
+      "rec": 405,
+      "src": 0,
+      "dur": 145,
+      "nome": "FASE 2 frase"
+     },
+     {
+      "arquivo": "textos/T1_A_JORNADA_fase3_frase.png",
+      "rec": 597,
+      "src": 0,
+      "dur": 146,
+      "nome": "FASE PERENE frase"
+     }
+    ]
+   },
+   "slots": [
+    {
+     "id": "1A",
+     "rec": 174,
+     "dur": 96,
+     "sugestao": "plano aberto do espaço"
+    },
+    {
+     "id": "1B",
+     "rec": 270,
+     "dur": 96,
+     "sugestao": "detalhe: equipamento / mãos"
+    },
+    {
+     "id": "2A",
+     "rec": 366,
+     "dur": 96,
+     "sugestao": "sala de avaliação"
+    },
+    {
+     "id": "2B",
+     "rec": 462,
+     "dur": 96,
+     "sugestao": "consultório"
+    },
+    {
+     "id": "PA",
+     "rec": 558,
+     "dur": 96,
+     "sugestao": "recepção / acolhimento"
+    },
+    {
+     "id": "PB",
+     "rec": 654,
+     "dur": 96,
+     "sugestao": "detalhe calmo do ambiente"
+    }
+   ],
+   "preview": "grafica/T1_A_JORNADA_PREVIEW_com_slots.mp4"
+  },
+  "T2": {
+   "nome": "T2_O_ESPACO",
+   "frames": 900,
+   "render": "NucleoViv_TV_T2_O_ESPACO_2160x3840_30p_loop",
+   "cenas": [
+    {
+     "nome": "Recepção",
+     "ini": 0,
+     "fim": 138
+    },
+    {
+     "nome": "Sala De Espera",
+     "ini": 138,
+     "fim": 264
+    },
+    {
+     "nome": "Sala De Avaliação",
+     "ini": 264,
+     "fim": 390
+    },
+    {
+     "nome": "Consultório",
+     "ini": 390,
+     "fim": 516
+    },
+    {
+     "nome": "Sala De Procedimentos",
+     "ini": 516,
+     "fim": 642
+    },
+    {
+     "nome": "Núcleo Viv",
+     "ini": 642,
+     "fim": 768
+    },
+    {
+     "nome": "Assinatura",
+     "ini": 768,
+     "fim": 900
+    }
+   ],
+   "trilhas": {
+    "1": [
+     {
+      "arquivo": "grafica/T2_O_ESPACO_BASE_fundo_e_logos.mp4",
+      "rec": 0,
+      "src": 0,
+      "dur": 900,
+      "nome": "Base: fundo e logos"
+     }
+    ],
+    "3": [
+     {
+      "arquivo": "textos/T2_O_ESPACO_escurecimento.png",
+      "rec": 12,
+      "src": 0,
+      "dur": 756,
+      "nome": "Escurecimento sob o texto"
+     }
+    ],
+    "4": [
+     {
+      "arquivo": "textos/T2_O_ESPACO_legenda1.png",
+      "rec": 26,
+      "src": 0,
+      "dur": 104,
+      "nome": "Legenda Recepção"
+     },
+     {
+      "arquivo": "textos/T2_O_ESPACO_legenda2.png",
+      "rec": 152,
+      "src": 0,
+      "dur": 104,
+      "nome": "Legenda Sala De Espera"
+     },
+     {
+      "arquivo": "textos/T2_O_ESPACO_legenda3.png",
+      "rec": 278,
+      "src": 0,
+      "dur": 104,
+      "nome": "Legenda Sala De Avaliação"
+     },
+     {
+      "arquivo": "textos/T2_O_ESPACO_legenda4.png",
+      "rec": 404,
+      "src": 0,
+      "dur": 104,
+      "nome": "Legenda Consultório"
+     },
+     {
+      "arquivo": "textos/T2_O_ESPACO_legenda5.png",
+      "rec": 530,
+      "src": 0,
+      "dur": 104,
+      "nome": "Legenda Sala De Procedimentos"
+     },
+     {
+      "arquivo": "textos/T2_O_ESPACO_legenda6.png",
+      "rec": 655,
+      "src": 0,
+      "dur": 105,
+      "nome": "Legenda Núcleo Viv"
+     }
+    ]
+   },
+   "slots": [
+    {
+     "id": "E1",
+     "rec": 12,
+     "dur": 126,
+     "sugestao": "recepção"
+    },
+    {
+     "id": "E2",
+     "rec": 138,
+     "dur": 126,
+     "sugestao": "sala de espera"
+    },
+    {
+     "id": "E3",
+     "rec": 264,
+     "dur": 126,
+     "sugestao": "sala de avaliação"
+    },
+    {
+     "id": "E4",
+     "rec": 390,
+     "dur": 126,
+     "sugestao": "consultório"
+    },
+    {
+     "id": "E5",
+     "rec": 516,
+     "dur": 126,
+     "sugestao": "sala de procedimentos"
+    },
+    {
+     "id": "E6",
+     "rec": 642,
+     "dur": 126,
+     "sugestao": "núcleo viv"
+    }
+   ],
+   "preview": "grafica/T2_O_ESPACO_PREVIEW_com_slots.mp4"
+  }
+ }
+}
