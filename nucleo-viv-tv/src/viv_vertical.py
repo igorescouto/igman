@@ -202,7 +202,8 @@ def m1_path(u):
 
 def m1_render(v, t, frame, mode):
     A = v.A
-    d = ImageDraw.Draw(frame, "RGBA")
+    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(ov)
     o = window(t, 0.35, 4.3, 0.45)
     if o > 0:
         r = px(30) * (1 - ease_out((t - 0.35) / 0.8))
@@ -223,6 +224,7 @@ def m1_render(v, t, frame, mode):
         hx, hy = pts[-1]
         rr = px(15)
         d.ellipse([hx - rr, hy - rr, hx + rr, hy + rr], fill=OFFWHITE + (int(255 * fa),))
+    texts = []
     for i in range(3):
         tn = v.tn[i]
         if t < tn or fa <= 0:
@@ -239,11 +241,14 @@ def m1_render(v, t, frame, mode):
         d.ellipse([nx - ri, ny - ri, nx + ri, ny + ri], fill=(OFFWHITE if act > 0.5 else CREAM) + (int(255 * fa),))
         li, ti, di = A["ph"][i]
         x = W * 0.27
-        put(frame, li, x, ny - px(26), ramp(t, tn + 0.1, tn + 0.5) * fa * (0.7 + 0.3 * act))
+        texts.append((li, x, ny - px(26), ramp(t, tn + 0.1, tn + 0.5) * fa * (0.7 + 0.3 * act)))
         o1 = window(t, tn + 0.2, tn + 5.6, FADE)
-        put(frame, ti, x + px(40) * (1 - ease_out((t - tn - 0.2) / 0.7)), ny + px(90), o1)
+        texts.append((ti, x + px(40) * (1 - ease_out((t - tn - 0.2) / 0.7)), ny + px(90), o1))
         o2 = window(t, tn + 0.9, tn + 5.6, FADE)
-        put(frame, di, x + px(40) * (1 - ease_out((t - tn - 0.9) / 0.7)), ny + px(90) + ti.height - 2 * ti.info["pad"] + px(64), o2)
+        texts.append((di, x + px(40) * (1 - ease_out((t - tn - 0.9) / 0.7)), ny + px(90) + ti.height - 2 * ti.info["pad"] + px(64), o2))
+    frame.alpha_composite(ov)
+    for a_ in texts:
+        put(frame, *a_)
     lockup(frame, A, t, 25.1, 29.3, sig=True)
 
 
@@ -291,13 +296,15 @@ def m2_card(v, i, t, base):
     o2 = ramp(t, t0 + 1.4, t0 + 1.7) * out
     r2 = px(30) * (1 - ease_out((t - t0 - 1.4) / 0.7))
     put(layer, c["frase"], W / 2, H * 0.505 + c["titulo"].height - 2 * c["titulo"].info["pad"] + px(90) + r2, o2, "c")
-    d = ImageDraw.Draw(layer, "RGBA")                # progresso: 3 traços, o atual cheio
+    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(ov)                # progresso: 3 traços, o atual cheio
     fg = GREEN if i == 1 else OFFWHITE
     sw, gap = px(150), px(36)
     x0 = W / 2 - (3 * sw + 2 * gap) / 2
-    for k in range(3):
+    for k in range(3 if o1 > 0.003 else 0):
         a = int((255 if k == i else 90) * o1)
         d.rounded_rectangle([x0 + k * (sw + gap), H * 0.9, x0 + k * (sw + gap) + sw, H * 0.9 + px(10)], px(5), fill=fg + (a,))
+    layer.alpha_composite(ov)
     return layer
 
 
@@ -350,13 +357,15 @@ def t1_chapter(frame, v, i, o1=1.0, o2=1.0, r1=0, r2=0, parts=("titulo", "frase"
     li, ti, pi = v.A["ch"][i]
     x = W * 0.08
     if "titulo" in parts:
-        d = ImageDraw.Draw(frame, "RGBA")
+        ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(ov)
         for k in range(3):
             cx, cy, rr = x + px(18) + k * px(72), H * 0.672 + r1, px(17)
             if k == i:
                 d.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], fill=OFFWHITE + (int(255 * o1),))
             else:
                 d.ellipse([cx - rr, cy - rr, cx + rr, cy + rr], outline=CREAM + (int(170 * o1),), width=px(4))
+        frame.alpha_composite(ov)
         put(frame, li, x, H * 0.695 + r1, o1)
         put(frame, ti, x, H * 0.727 + r1, o1)
     if "frase" in parts:
@@ -401,7 +410,9 @@ def t2_caption(frame, v, i, o=1.0):
     x = W * 0.08
     h = act.height - 2 * act.info["pad"]
     top = H * 0.9 - h
-    ImageDraw.Draw(frame, "RGBA").line([(x, top - px(100)), (x, H * 0.9)], fill=CREAM + (int(225 * o),), width=px(6))
+    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    ImageDraw.Draw(ov).line([(x, top - px(100)), (x, H * 0.9)], fill=CREAM + (int(225 * o),), width=px(6))
+    frame.alpha_composite(ov)
     put(frame, amb, x + px(50), top - px(100), o)
     put(frame, act, x + px(50), top, o)
 
