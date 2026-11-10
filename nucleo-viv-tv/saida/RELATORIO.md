@@ -27,7 +27,7 @@ Produção: Igman · Cliente: Núcleo Viv (Dr. Lucas Gabriel, Porto Alegre)
 - **Logo:** usei o símbolo (03.png), separado nas duas peças (asa e crescente) para a animação de montagem, o lettering "V Í V" (09.png) e a linha "NÚCLEO DE MEDICINA INTEGRATIVA" que acompanha a logo horizontal.
 - **Pattern:** 02.png (creme) a 7,5% de opacidade, com deriva lenta. A deriva é senoidal e tem período igual à duração do vídeo, então o loop fecha sem salto.
 - ⚠️ **Logo animada da IDV:** não encontrei o arquivo no Drive acessível. Recriei a animação seguindo o briefing: o símbolo monta no centro, sobe e depois entram os textos. Se a animação oficial existir, dá para trocar a abertura do V1 por ela no Resolve (trilha V1, de 0 a 5,8 s).
-- ⚠️ **Fontes da marca:** não estavam acessíveis (o manual em PDF tem 130 MB e as fontes não estavam no Drive). Usei **Inter / Inter Display**: sem serifa, com desenho próximo ao da linha "NÚCLEO DE MEDICINA INTEGRATIVA" da logo e muito legível a distância. Se a marca tiver fonte própria, a troca é em uma linha (`F_TITLE`, `F_BODY`, `F_LABEL` em `src/viv_render.py`), e é só renderizar de novo.
+- ⚠️ **Fontes da marca:** não estavam acessíveis (o manual em PDF tem 130 MB e as fontes não estavam no Drive). Usei **Inter / Inter Display**: sem serifa, com desenho próximo ao da linha "NÚCLEO DE MEDICINA INTEGRATIVA" da logo e muito legível a distância. Se a marca tiver fonte própria, a troca é em uma linha (`F_TITLE`, `F_BODY`, `F_LABEL` em `src/viv_render.py`), e é só renderizar de novo. As fontes Inter (licença OFL) estão em `fonts/`, então o renderizador roda em qualquer máquina com Python 3, Pillow, numpy e ffmpeg.
 
 ## 3. Roteiros finais (texto na tela)
 
@@ -76,7 +76,18 @@ Fecha com logo + "Bem-estar em cada detalhe" e volta ao fundo vazio.
 4. Os brutos são apenas lidos nos dois caminhos: nada é movido, alterado ou apagado.
 
 ## 6. Verificação feita
-SEÇÃO PREENCHIDA AO FIM DOS RENDERS
+| Arquivo | Frames | Áudio | Emenda último→primeiro (PSNR) |
+|---|---|---|---|
+| V1 preview / base | 894 (29,8 s) | nenhum | 44,8 dB |
+| V2 preview / base | 900 (30,0 s) | nenhum | 44,7 dB |
+| V3 final 4K (e 1080p) | 885 (29,5 s) | nenhum | 44,8 dB |
+
+O PSNR de ~45 dB na emenda é igual ao de dois frames vizinhos quaisquer, ou seja, não há salto. O loop também vale para as versões finais montadas, porque o primeiro e o último frame vêm da camada base, sem take.
+
+- **Montador ffmpeg testado** com 6 clipes sintéticos (1080p): o V1 final saiu com 894 frames, os takes entraram nos slots com dissolve e os textos ficaram por cima. Os frames de checagem foram conferidos visualmente.
+- **Script do Resolve não testado** (não há Resolve no container). Ele segue a API oficial (`ImportMedia`, `AppendToTimeline` com `recordFrame`, `SetRenderSettings`). Se algo falhar, o caminho ffmpeg entrega o mesmo resultado.
+- **Folhas de contato:** `CONTATO_V1.jpg`, `CONTATO_V2.jpg` e `CONTATO_V3.jpg`, nesta pasta.
+- **Overlays (`*_OVERLAY_3840x2160/`):** sequências PNG com alfa, 894/900 frames, ~320 MB no total. Mantive PNG sem perda porque a compressão em paleta criava faixas no degradê de escurecimento.
 
 ## 7. Decisões tomadas sem poder perguntar
 1. Como faltavam os brutos, entreguei V3 final e V1/V2 como gráfica final + preview com slots + montagem automatizada, em vez de parar.
@@ -86,3 +97,15 @@ SEÇÃO PREENCHIDA AO FIM DOS RENDERS
 5. Os nomes das fases ficaram como no briefing. Nas frases, segui a jornada sem prometer resultado (cuidado com a publicidade médica: nada de antes/depois nem números de perda de peso).
 6. Pasta de saída: como o caminho veio em placeholder, tudo está em `nucleo-viv-tv/saida/` no repositório `igman`, branch `claude/nice-darwin-p05qmm`.
 7. A plataforma Igman não tem job do Núcleo Viv para TV. Não gravei nada nela.
+
+## 8. Arquivos
+```
+nucleo-viv-tv/
+  saida/      RELATORIO.md, CONTATO_V*.jpg, MP4s (V3 FINAL; V1/V2 PREVIEW e BASE), *_OVERLAY_3840x2160/ (PNG com alfa)
+  roteiro/    v1_a_jornada.json, v2_bastidor_silencioso.json  ← preencher "arquivo" de cada slot
+  src/        viv_render.py (gera toda a gráfica) · montar_com_brutos.py (ffmpeg) · resolve_montar_timelines.py + config_caminhos.json
+  idv/        cópias da logo e do pattern (originais intocados no Drive)
+  fonts/      Inter + JetBrains Mono (OFL)
+```
+Para mudar um texto: edite `make_v1/make_v2/make_v3` em `src/viv_render.py` e rode
+`python3 src/viv_render.py --var v1 --mode preview base overlay` (≈5 min por variação em 4K).

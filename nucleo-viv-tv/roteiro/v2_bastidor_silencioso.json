@@ -1,0 +1,75 @@
+{
+  "variacao": "v2",
+  "nome": "BASTIDOR_SILENCIOSO",
+  "duracao_s": 30.0,
+  "fps": 30,
+  "dissolve_s": 0.5,
+  "slots": [
+    {
+      "id": "B1",
+      "start": 0.4,
+      "end": 4.6,
+      "descricao": "Acolhimento desde a chegada",
+      "ambiente": "RECEPÇÃO",
+      "sugestao": "paciente chegando / recepcionista; plano aberto, câmera parada ou travelling lento",
+      "arquivo": "",
+      "entrada_s": 0.0,
+      "velocidade": 1.0
+    },
+    {
+      "id": "B2",
+      "start": 4.6,
+      "end": 8.8,
+      "descricao": "Avaliação de composição corporal",
+      "ambiente": "SALA DE AVALIAÇÃO",
+      "sugestao": "bioimpedância; plano médio, contemplativo",
+      "arquivo": "",
+      "entrada_s": 0.0,
+      "velocidade": 1.0
+    },
+    {
+      "id": "B3",
+      "start": 8.8,
+      "end": 13.0,
+      "descricao": "Medida de circunferência",
+      "ambiente": "SALA DE AVALIAÇÃO",
+      "sugestao": "fita métrica; detalhe nas mãos",
+      "arquivo": "",
+      "entrada_s": 0.0,
+      "velocidade": 1.0
+    },
+    {
+      "id": "B4",
+      "start": 13.0,
+      "end": 17.2,
+      "descricao": "Teste de força muscular",
+      "ambiente": "SALA DE AVALIAÇÃO",
+      "sugestao": "dinamômetro de preensão; detalhe",
+      "arquivo": "",
+      "entrada_s": 0.0,
+      "velocidade": 1.0
+    },
+    {
+      "id": "B5",
+      "start": 17.2,
+      "end": 21.4,
+      "descricao": "Consulta individualizada",
+      "ambiente": "CONSULTÓRIO",
+      "sugestao": "médico e paciente conversando; perfil, sem rosto em close",
+      "arquivo": "",
+      "entrada_s": 0.0,
+      "velocidade": 1.0
+    },
+    {
+      "id": "B6",
+      "start": 21.4,
+      "end": 25.6,
+      "descricao": "Cuidado em cada detalhe",
+      "ambiente": "SALA DE ESPERA",
+      "sugestao": "detalhe do ambiente: luz, plantas, poltrona; movimento muito lento",
+      "arquivo": "",
+      "entrada_s": 0.0,
+      "velocidade": 1.0
+    }
+  ]
+}

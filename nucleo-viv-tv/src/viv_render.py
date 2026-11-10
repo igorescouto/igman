@@ -27,12 +27,12 @@ GREEN_DEEP = (10, 30, 24)   # sombra do verde, para escurecer sob texto
 CREAM = (206, 201, 191)     # #CEC9BF creme do pattern
 OFFWHITE = (242, 239, 233)  # #F2EFE9 texto principal (contraste ~11:1 sobre o verde)
 
-FONT_DIR = "/usr/share/fonts/opentype/inter"
+FONT_DIR = os.path.join(ROOT, "fonts")  # Inter (OFL) incluída no projeto
 F_TITLE = os.path.join(FONT_DIR, "InterDisplay-Medium.otf")
 F_BODY = os.path.join(FONT_DIR, "InterDisplay-Regular.otf")
 F_LIGHT = os.path.join(FONT_DIR, "InterDisplay-Light.otf")
 F_LABEL = os.path.join(FONT_DIR, "Inter-SemiBold.otf")
-F_MONO = "/usr/share/fonts/truetype/jetbrains-mono/JetBrainsMono-Regular.ttf"
+F_MONO = os.path.join(FONT_DIR, "JetBrainsMono-Regular.ttf")
 
 # ---------- utilidades ----------
 SC = 1.0          # escala global (1.0 = 3840x2160)

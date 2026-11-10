@@ -31,6 +31,7 @@ def main():
     ap.add_argument("--var", required=True, choices=["v1", "v2"])
     ap.add_argument("--brutos", required=True)
     ap.add_argument("--saida", default=os.path.join(ROOT, "saida"))
+    ap.add_argument("--destino", default=None, help="pasta do vídeo final (padrão: a mesma de --saida)")
     ap.add_argument("--auto", action="store_true")
     ap.add_argument("--crf", default="17")
     a = ap.parse_args()
@@ -87,7 +88,7 @@ def main():
         fc.append(f"[{last}][t{k}]overlay=eof_action=pass:repeatlast=0[m{k}]")
         last = f"m{k}"
     fc.append(f"[{last}][{len(slots) + 1}:v]overlay=eof_action=pass,format=yuv420p,trim=duration={dur}[out]")
-    out4k = os.path.join(a.saida, f"NucleoViv_TV_{tag}_FINAL_{W}x{H}_30p_loop.mp4")
+    out4k = os.path.join(a.destino or a.saida, f"NucleoViv_TV_{tag}_FINAL_{W}x{H}_30p_loop.mp4")
     cmd += ["-filter_complex", ";".join(fc), "-map", "[out]", "-an", "-c:v", "libx264", "-preset", "medium",
             "-crf", a.crf, "-profile:v", "high", "-level", "5.1", "-g", "30", "-movflags", "+faststart", out4k]
     subprocess.run(cmd, check=True)
