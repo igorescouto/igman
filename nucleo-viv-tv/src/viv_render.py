@@ -558,6 +558,12 @@ def render_frame(i):
     return frame.convert("RGB").tobytes()
 
 
+def save_overlay_frame(i):
+    im = render_frame(i)
+    im.save(os.path.join(G["ovl_dir"], f"{G['tag']}_OVERLAY_{i:04d}.png"), compress_level=6)
+    return i
+
+
 def A_ph(v, s):
     return v.assets["ph_imgs"][s["id"]]
 
@@ -590,10 +596,10 @@ def run(var_key, mode, scale, only_frames=None, out_dir=OUT, crf=17):
     if mode == "overlay":
         d = os.path.join(out_dir, f"{tag}_OVERLAY_{res}")
         os.makedirs(d, exist_ok=True)
+        G["ovl_dir"], G["tag"] = d, tag
         with Pool(os.cpu_count()) as pool:
-            for i, im in enumerate(pool.imap(render_frame, range(n), chunksize=4)):
-                bb = im.getbbox()
-                im.save(os.path.join(d, f"{tag}_OVERLAY_{i:04d}.png"), optimize=False, compress_level=6)
+            for _ in pool.imap_unordered(save_overlay_frame, range(n), chunksize=4):
+                pass
         print(d)
         return v
     suffix = "PREVIEW_com_slots" if (mode == "preview" and v.slots) else ("BASE_grafica" if mode == "base" else "FINAL")
@@ -605,8 +611,10 @@ def run(var_key, mode, scale, only_frames=None, out_dir=OUT, crf=17):
            "-g", "30", "-movflags", "+faststart", path]
     ff = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     with Pool(os.cpu_count()) as pool:
-        for b in pool.imap(render_frame, range(n), chunksize=4):
-            ff.stdin.write(b)
+        step = 16  # janela limitada: evita acumular frames 4K na memória
+        for k in range(0, n, step):
+            for b in pool.map(render_frame, range(k, min(n, k + step))):
+                ff.stdin.write(b)
     ff.stdin.close()
     ff.wait()
     print(path)
